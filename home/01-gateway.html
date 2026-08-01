@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<!--
+  FIESTA FRESH — Homepage ("The Gateway"), redesign v2
+  Direction contract:
+  THESIS: Premium, minimal, serious business. One image, one headline, one sub-line, hard numbers,
+    trusted structure. Nothing that does not help a visitor grasp the company in seconds.
+  FORM: Editorial-luxury. Fraunces display serif + Archivo grotesque. Warm paper, deep ink navy,
+    one restrained amber accent. Zero border-radius. Hairline rules. Generous whitespace.
+  STORY: Hero (real ship at the Cape Town gateway, headline in the sky) → navy capability band
+    flowing out of the hero → trust strip (Dole plc / APAC / CIPC) → three services in sharp
+    editorial rows → contact.
+  NOTE: The facility & people section was moved off the homepage; its markup and CSS are
+    preserved in about-facility-section.html for the planned About page.
+  IMAGERY: All assets extracted from fiestafresh.co.za (see ../assets). No external stock.
+  CONTENT: Verified dossier facts only. No Kenya / North America references. No news sections.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Fiesta Fresh — Fresh Produce Trading, Cold Storage & Logistics | Cape Town</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Fiesta Fresh trades, cools and moves fresh produce through the Cape Town export gateway — a 2,000-pallet cold store, 80+ reefer plug-in points and its own refrigerated fleet, majority-owned by Dole plc.">
+<meta property="og:title" content="Fiesta Fresh — More than just produce">
+<meta property="og:description" content="Fresh produce trading, cold storage and logistics at the Cape Town export gateway. Backed by Dole plc.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="../assets/getty-1165485151.jpg">
+<link rel="icon" type="image/png" href="../assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FAF8F4;
+    --paper-dim:#F3F0E9;
+    --ink:#101C2E;
+    --ink-70:rgba(16,28,46,.72);
+    --ink-50:rgba(16,28,46,.52);
+    --line:rgba(16,28,46,.14);
+    --navy-0:#0A1B31;
+    --navy-1:#0E2547;
+    --navy-2:#14315C;
+    --amber:#D97E1F;
+    --white-dim:rgba(250,248,244,.66);
+    --white-line:rgba(250,248,244,.16);
+    --serif:"Fraunces",Georgia,serif;
+    --sans:"Archivo",Helvetica,Arial,sans-serif;
+    --max:1320px;
+    --pad:clamp(20px,4.5vw,64px);
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;scroll-padding-top:76px}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+    overflow-x:hidden;
+  }
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--ink);color:var(--paper)}
+
+  .skip-link{
+    position:absolute;left:16px;top:-60px;z-index:200;
+    background:var(--ink);color:var(--paper);
+    padding:10px 18px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+    transition:top .2s ease;
+  }
+  .skip-link:focus{top:12px}
+
+  :focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+
+  .wrap{width:100%;max-width:var(--max);margin:0 auto;padding-left:var(--pad);padding-right:var(--pad)}
+
+  .eyebrow{
+    font-family:var(--sans);
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:.24em;
+    text-transform:uppercase;
+  }
+  .rule{width:44px;height:1px;background:currentColor;opacity:.5}
+
+  /* ---------- Nav ---------- */
+  .nav{
+    position:fixed;inset:0 0 auto 0;z-index:100;
+    transition:background .35s ease,border-color .35s ease,backdrop-filter .35s ease;
+    border-bottom:1px solid transparent;
+  }
+  .nav.scrolled{
+    background:rgba(250,248,244,.92);
+    backdrop-filter:blur(12px);
+    border-bottom-color:var(--line);
+  }
+  .nav-inner{
+    max-width:var(--max);margin:0 auto;
+    padding:0 var(--pad);
+    height:76px;
+    display:flex;align-items:center;justify-content:space-between;gap:24px;
+  }
+  .brand{
+    display:inline-flex;align-items:center;
+    white-space:nowrap;
+  }
+  .brand img{height:44px;width:auto;display:block}
+  @media (max-width:560px){
+    .brand img{height:36px}
+  }
+  .nav-links{display:flex;align-items:center;gap:clamp(18px,3vw,40px);list-style:none}
+  .nav-links a{
+    font-size:12px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--ink-70);
+    padding:6px 0;
+    border-bottom:1px solid transparent;
+    transition:color .25s ease,border-color .25s ease;
+  }
+  .nav-links a:hover{color:var(--ink);border-bottom-color:var(--ink)}
+  .nav-cta{
+    font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--paper);background:var(--ink);
+    padding:12px 22px;
+    transition:background .25s ease,transform .15s ease;
+  }
+  .nav-cta:hover{background:var(--navy-2)}
+  .nav-cta:active{transform:translateY(1px)}
+  .nav-cta .short{display:none}
+  @media (max-width:820px){
+    .nav-links{display:none}
+  }
+  @media (max-width:560px){
+    .nav-inner{height:64px}
+    .nav-cta{font-size:10px;padding:11px 16px;letter-spacing:.14em}
+    .nav-cta .full{display:none}
+    .nav-cta .short{display:inline}
+  }
+
+  /* ---------- Hero ----------
+     Full-bleed photograph. Type lives entirely in the sky's dead space;
+     a whisper of paper haze guarantees contrast without reading as a scrim. */
+  .hero{
+    position:relative;
+    min-height:100svh;
+    background:#0B2534;
+    overflow:hidden;
+  }
+  .hero-media{position:absolute;inset:0;overflow:hidden}
+  .hero-media img{
+    width:100%;height:100%;
+    object-fit:cover;
+    object-position:50% 28%;
+    transform:scale(1.03);
+  }
+  .hero-media::after{
+    content:"";position:absolute;inset:0;
+    background:
+      linear-gradient(to bottom, rgba(250,248,244,.58) 0%, rgba(250,248,244,.24) 26%, rgba(250,248,244,0) 46%),
+      linear-gradient(to bottom, rgba(11,37,52,0) 60%, rgba(11,37,52,.55) 88%, #0B2534 100%);
+  }
+  .hero-content{
+    position:relative;z-index:1;
+    padding-top:clamp(96px,12vh,140px);
+  }
+  .hero-eyebrow{
+    display:flex;align-items:center;gap:18px;
+    color:var(--ink);
+    margin-bottom:clamp(18px,2.6vh,26px);
+    text-shadow:0 1px 18px rgba(250,248,244,.9);
+  }
+  .hero h1{
+    font-family:var(--serif);
+    font-weight:300;
+    font-optical-sizing:auto;
+    font-size:clamp(38px,4.6vw,68px);
+    line-height:1.04;
+    letter-spacing:-0.015em;
+    color:var(--ink);
+    max-width:14ch;
+    text-wrap:balance;
+    text-shadow:0 1px 28px rgba(250,248,244,.85), 0 0 6px rgba(250,248,244,.5);
+  }
+  .hero h1 em{font-style:italic;font-weight:400}
+  .hero-sub{
+    margin-top:clamp(18px,2.6vh,26px);
+    max-width:48ch;
+    font-size:clamp(14px,1.15vw,16px);
+    line-height:1.65;
+    color:var(--ink);
+    font-weight:500;
+    text-wrap:pretty;
+    text-shadow:0 1px 16px rgba(250,248,244,.95), 0 0 4px rgba(250,248,244,.6);
+  }
+  .hero-actions{
+    margin-top:clamp(24px,3.4vh,34px);
+    display:flex;flex-wrap:wrap;gap:14px;
+  }
+  .btn{
+    display:inline-flex;align-items:center;gap:12px;
+    font-family:var(--sans);
+    font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
+    padding:18px 32px;
+    border:1px solid var(--ink);
+    cursor:pointer;
+    transition:background .28s ease,color .28s ease,border-color .28s ease,transform .15s ease;
+  }
+  .btn:active{transform:translateY(1px)}
+  .btn .arr{transition:transform .28s ease}
+  .btn:hover .arr{transform:translateX(5px)}
+  .btn-solid{background:#154360;color:var(--paper);border-color:#154360}
+  .btn-solid:hover{background:var(--amber);border-color:var(--amber);color:var(--ink)}
+  .btn-ghost{
+    background:#FFFFFF;
+    color:var(--ink);
+    border-color:#FFFFFF;
+  }
+  .btn-ghost:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+  @media (max-width:560px){
+    .hero-content{padding-top:96px}
+    .btn{font-size:10px;padding:15px 20px;letter-spacing:.14em}
+  }
+  .hero-banner{
+    position:absolute;left:0;right:0;bottom:0;z-index:2;
+    background:linear-gradient(168deg,#0B2534 0%,#10374C 50%,#154360 100%);
+    border-top:1px solid var(--white-line);
+    color:var(--paper);
+  }
+  .hb-inner{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:clamp(20px,3vw,48px);
+  }
+  .hb-item{
+    padding:clamp(16px,2vh,24px) 0;
+    display:flex;flex-direction:column;justify-content:center;gap:7px;
+  }
+  .hb-val{
+    font-family:var(--serif);font-weight:300;
+    font-size:clamp(20px,1.9vw,28px);
+    line-height:1;letter-spacing:-.01em;
+    font-variant-numeric:lining-nums;
+    white-space:nowrap;
+  }
+  .hb-val small{font-size:.5em;font-style:italic;margin-left:.08em}
+  .hb-lbl{
+    font-size:9.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--white-dim);line-height:1.55;
+  }
+  @media (max-width:960px){
+    .hb-inner{display:grid;grid-template-columns:repeat(3,1fr);gap:8px 24px}
+    .hb-item:nth-child(n+4){border-top:1px solid var(--white-line)}
+  }
+  @media (max-width:560px){
+    .hb-inner{grid-template-columns:1fr 1fr}
+    .hb-item{border-top:1px solid var(--white-line)}
+    .hb-item:nth-child(-n+2){border-top:none}
+  }
+
+  /* hero entrance */
+  .js .hero-eyebrow,.js .hero h1 .line,.js .hero-sub,.js .hero-actions,.js .hero-banner{
+    opacity:0;transform:translateY(26px);
+    animation:rise 1s cubic-bezier(.22,.61,.21,1) forwards;
+  }
+  .js .hero h1 .line:nth-child(2){animation-delay:.12s}
+  .js .hero-sub{animation-delay:.24s}
+  .js .hero-actions{animation-delay:.36s}
+  .js .hero-banner{animation-delay:.5s}
+  @keyframes rise{to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion:reduce){
+    .js .hero-eyebrow,.js .hero h1 .line,.js .hero-sub,.js .hero-actions,.js .hero-banner{animation:none;opacity:1;transform:none}
+  }
+
+  /* ---------- Sections common ---------- */
+  section{position:relative}
+  .section-pad{padding:clamp(60px,7.5vw,108px) 0}
+  .section-head{
+    display:grid;
+    grid-template-columns:1fr auto;
+    align-items:end;
+    gap:32px;
+    margin-bottom:clamp(38px,5vw,60px);
+  }
+  .section-head .eyebrow{color:var(--ink-50);display:flex;align-items:center;gap:16px;margin-bottom:20px}
+  .section-title{
+    font-family:var(--serif);
+    font-weight:300;
+    font-size:clamp(34px,4.2vw,60px);
+    line-height:1.06;
+    letter-spacing:-.01em;
+    max-width:16ch;
+    text-wrap:balance;
+  }
+  .section-title em{font-style:italic}
+  .section-head p{max-width:36ch;font-size:15px;color:var(--ink-70);line-height:1.75}
+  @media (max-width:820px){
+    .section-head{grid-template-columns:1fr}
+  }
+
+  /* ---------- Services ---------- */
+  /* ---------- Service cards ----------
+     Image cards in a row. On hover the photograph slides away and the
+     description panel fills the card. The bottom-right corner is notched
+     around a circular arrow badge that floats clear of the image. */
+  .svc-cards{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:clamp(16px,2vw,30px);
+    max-width:1140px;
+    margin:0 auto;
+  }
+  .svc-card{
+    position:relative;
+    aspect-ratio:3/3.5;
+  }
+  .svc-card-frame{
+    position:absolute;inset:0;z-index:1;
+    overflow:hidden;
+    background:var(--paper-dim);
+    /* concave circular scoop: the badge floats entirely clear of the image */
+    -webkit-mask:radial-gradient(circle 37px at calc(100% - 14px) calc(100% - 14px), transparent 97%, #000 100%);
+    mask:radial-gradient(circle 37px at calc(100% - 14px) calc(100% - 14px), transparent 97%, #000 100%);
+  }
+  .svc-card-media{
+    position:absolute;inset:0;z-index:2;
+    transition:transform .65s cubic-bezier(.76,0,.24,1);
+    will-change:transform;
+  }
+  .svc-card-media img{width:100%;height:100%;object-fit:cover}
+  .svc-card-media::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(to top, rgba(11,37,52,.72) 0%, rgba(11,37,52,0) 42%);
+  }
+  .svc-card-tag{
+    position:absolute;left:20px;bottom:18px;z-index:3;
+    display:flex;align-items:center;gap:12px;
+    color:var(--paper);
+  }
+  .svc-card-tag .idx{
+    font-family:var(--serif);font-style:italic;font-weight:300;font-size:15px;
+    color:rgba(250,248,244,.75);
+  }
+  .svc-card-tag .rule{background:rgba(250,248,244,.6)}
+  .svc-card-tag .name{
+    font-family:var(--sans);
+    font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
+  }
+  .svc-card-tag{transition:opacity .35s ease}
+  .svc-card:hover .svc-card-tag,
+  .svc-card:focus-within .svc-card-tag,
+  .svc-card.open .svc-card-tag{opacity:0}
+  .svc-card.open .svc-card-media{transform:translateY(-100.5%)}
+  .svc-card.open .svc-card-panel{opacity:1}
+  .svc-card-panel{
+    position:absolute;inset:0;z-index:1;
+    background:var(--paper);
+    padding:clamp(22px,2.2vw,32px);
+    display:flex;flex-direction:column;
+    opacity:0;
+    transition:opacity .45s ease .12s;
+  }
+  .svc-card:hover .svc-card-media,
+  .svc-card:focus-within .svc-card-media{transform:translateY(-100.5%)}
+  .svc-card:hover .svc-card-panel,
+  .svc-card:focus-within .svc-card-panel{opacity:1}
+  .svc-index{
+    font-family:var(--serif);font-style:italic;font-weight:300;
+    font-size:15px;color:var(--ink-50);
+    display:flex;align-items:center;gap:16px;
+    margin-bottom:18px;
+  }
+  .svc-title{
+    font-family:var(--serif);font-weight:300;
+    font-size:clamp(26px,2.2vw,34px);
+    line-height:1.08;letter-spacing:-.01em;
+    margin-bottom:14px;
+  }
+  .svc-copy{font-size:14px;line-height:1.75;color:var(--ink-70)}
+  .svc-link{
+    margin-top:auto;
+    margin-bottom:34px; /* keep clear of the notched corner */
+    display:inline-flex;align-items:center;gap:12px;
+    align-self:flex-start;
+    font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
+    border-bottom:1px solid var(--ink);
+    padding-bottom:8px;
+    transition:color .25s ease,border-color .25s ease,gap .25s ease;
+  }
+  .svc-link:hover{color:var(--amber);border-color:var(--amber);gap:18px}
+  .svc-card-arrow{
+    position:absolute;right:-14px;bottom:-14px;z-index:4;
+    width:56px;height:56px;
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    background:var(--ink);
+    color:#FFFFFF;
+    transition:background .3s ease,color .3s ease,transform .3s ease;
+  }
+  .svc-card-arrow svg{transition:transform .3s ease}
+  .svc-card:hover .svc-card-arrow,
+  .svc-card:focus-within .svc-card-arrow,
+  .svc-card.open .svc-card-arrow{background:var(--amber);color:var(--ink)}
+  .svc-card:hover .svc-card-arrow svg,
+  .svc-card:focus-within .svc-card-arrow svg{transform:translate(2px,-2px)}
+  @media (max-width:900px){
+    .svc-cards{grid-template-columns:1fr;gap:20px}
+    .svc-card{aspect-ratio:16/10}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .svc-card-media{transition:none}
+    .svc-card-panel{transition:none}
+  }
+
+  /* breathing room between the services rows and the contact band */
+  #services{padding-bottom:clamp(84px,10vw,140px)}
+
+  /* ---------- Contact ---------- */
+  .contact{
+    background:linear-gradient(160deg,var(--navy-1) 0%,var(--navy-0) 100%);
+    color:var(--paper);
+  }
+  .contact-inner{
+    padding:clamp(64px,8vw,112px) 0;
+    display:grid;
+    grid-template-columns:repeat(12,1fr);
+    gap:clamp(24px,3vw,48px);
+    align-items:end;
+  }
+  .contact-lead{grid-column:1/8}
+  .contact .eyebrow{color:var(--white-dim);display:flex;align-items:center;gap:16px;margin-bottom:26px}
+  .contact h2{
+    font-family:var(--serif);font-weight:300;
+    font-size:clamp(40px,5.4vw,76px);
+    line-height:1.04;letter-spacing:-.015em;
+    max-width:14ch;
+    text-wrap:balance;
+  }
+  .contact h2 em{font-style:italic}
+  .contact-lead p{
+    margin-top:26px;max-width:44ch;
+    font-size:15px;line-height:1.8;color:var(--white-dim);
+  }
+  .contact-details{grid-column:9/13;display:grid;gap:0}
+  .contact-details a,.contact-details div.row{
+    display:flex;flex-direction:column;gap:6px;
+    padding:20px 0;
+    border-top:1px solid var(--white-line);
+  }
+  .contact-details .k{font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--white-dim)}
+  .contact-details .v{font-family:var(--serif);font-size:clamp(18px,1.6vw,22px);font-weight:300}
+  .contact-details a .v{transition:color .25s ease}
+  .contact-details a:hover .v{color:var(--amber)}
+  .contact-actions{
+    grid-column:1/-1;
+    margin-top:clamp(28px,3.5vw,44px);
+    display:flex;flex-wrap:wrap;gap:14px;
+  }
+  .btn-light{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+  .btn-light:hover{background:var(--amber);border-color:var(--amber);color:var(--paper)}
+  .btn-outline-light{background:transparent;color:var(--paper);border-color:rgba(250,248,244,.4)}
+  .btn-outline-light:hover{border-color:var(--paper);background:rgba(250,248,244,.06)}
+  @media (max-width:900px){
+    .contact-lead{grid-column:1/-1}
+    .contact-details{grid-column:1/-1;margin-top:16px}
+  }
+
+  /* ---------- Footer ---------- */
+  footer{
+    background:var(--navy-0);
+    color:var(--white-dim);
+    border-top:1px solid var(--white-line);
+  }
+  .foot-inner{
+    padding:clamp(40px,5vw,64px) 0;
+    display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:24px;
+  }
+  .foot-brand{
+    font-weight:700;font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--paper);
+  }
+  .foot-meta{font-size:12px;letter-spacing:.06em;line-height:2;text-align:right}
+  .foot-legal{
+    border-top:1px solid var(--white-line);
+    padding:22px 0;
+    display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;
+    font-size:11px;letter-spacing:.08em;
+  }
+  .foot-legal a{border-bottom:1px solid transparent;transition:color .25s ease,border-color .25s ease}
+  .foot-legal a:hover{color:var(--paper);border-bottom-color:var(--paper)}
+  @media (max-width:720px){
+    .foot-meta{text-align:left}
+  }
+
+  /* ---------- Reveal on scroll ---------- */
+  .js .reveal{opacity:0;transform:translateY(34px);transition:opacity .9s cubic-bezier(.22,.61,.21,1),transform .9s cubic-bezier(.22,.61,.21,1)}
+  .js .reveal.in{opacity:1;transform:none}
+  .js .reveal[data-delay="1"]{transition-delay:.1s}
+  .js .reveal[data-delay="2"]{transition-delay:.2s}
+  .js .reveal[data-delay="3"]{transition-delay:.3s}
+  @media (prefers-reduced-motion:reduce){
+    .js .reveal{opacity:1;transform:none;transition:none}
+  }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#top"><img src="../assets/logo-primary.png" alt="Fiesta Fresh"></a>
+    <nav aria-label="Primary">
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <a class="nav-cta" href="#contact"><span class="full">Start a conversation</span><span class="short">Contact</span></a>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="top">
+    <div class="hero-content wrap">
+      <p class="hero-eyebrow eyebrow"><span class="rule"></span>Trading · Cold Storage · Logistics</p>
+      <h1>
+        <span class="line">More than</span><br>
+        <span class="line">just <em>produce.</em></span>
+      </h1>
+      <p class="hero-sub">
+        Fiesta Fresh trades, cools and moves fresh produce through the Cape Town export
+        gateway — its own cold store, reefer capacity and refrigerated fleet, majority-owned
+        by Dole&nbsp;plc.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-solid" href="#services">Explore services <span class="arr">→</span></a>
+        <a class="btn btn-ghost" href="#contact">Trade with us <span class="arr">→</span></a>
+      </div>
+    </div>
+    <div class="hero-media">
+      <img src="../assets/getty-1165485151.jpg" alt="A laden container vessel approaching Cape Town, Table Mountain on the horizon" fetchpriority="high">
+    </div>
+    <div class="hero-banner">
+      <div class="hb-inner wrap">
+        <div class="hb-item">
+          <span class="hb-val"><span data-count="2000" data-format="thousands">0</span></span>
+          <span class="hb-lbl">Refrigerated pallet spaces</span>
+        </div>
+        <div class="hb-item">
+          <span class="hb-val"><span data-count="80">0</span><small>+</small></span>
+          <span class="hb-lbl">Reefer plug-in points</span>
+        </div>
+        <div class="hb-item">
+          <span class="hb-val">~15<small>km</small></span>
+          <span class="hb-lbl">To the Port of Cape Town</span>
+        </div>
+        <div class="hb-item">
+          <span class="hb-val">APAC</span>
+          <span class="hb-lbl">Registered fresh produce agent</span>
+        </div>
+        <div class="hb-item">
+          <span class="hb-val">CIPC</span>
+          <span class="hb-lbl">K2024267384 · VAT 9198362270</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SERVICES ============ -->
+  <section class="section-pad" id="services">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <p class="eyebrow"><span class="rule"></span>What we do</p>
+          <h2 class="section-title">Three disciplines, <em>one unbroken cold chain.</em></h2>
+        </div>
+        <p>Every service runs through our own facility, our own equipment and our own people — nothing handed off, nothing lost in between.</p>
+      </div>
+
+      <div class="svc-cards">
+        <article class="svc-card reveal">
+          <div class="svc-card-frame">
+            <div class="svc-card-panel">
+              <p class="svc-index">01 <span class="rule"></span></p>
+              <h3 class="svc-title">Trading</h3>
+              <p class="svc-copy">
+                Market-led trading in locally sourced and imported produce, supplying major retail
+                chains, independent customers and export markets — year-round, across origins and seasons.
+              </p>
+              <a class="svc-link" href="#contact">Enquire about trading <span>→</span></a>
+            </div>
+            <div class="svc-card-media">
+              <img src="../assets/getty-1976220529.jpg" alt="Fresh produce merchandised on retail shelving" loading="lazy">
+            </div>
+          </div>
+          <div class="svc-card-tag"><span class="idx">01</span><span class="rule"></span><span class="name">Trading</span></div>
+          <a class="svc-card-arrow" href="#contact" aria-label="Enquire about trading"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H4M13 1v9" stroke="currentColor" stroke-width="1.6"/></svg></a>
+        </article>
+
+        <article class="svc-card reveal" data-delay="1">
+          <div class="svc-card-frame">
+            <div class="svc-card-panel">
+              <p class="svc-index">02 <span class="rule"></span></p>
+              <h3 class="svc-title">Cold Storage</h3>
+              <p class="svc-copy">
+                A 2,000-pallet refrigerated store with 80+ reefer plug-in points, held to stringent
+                market standards by a dedicated, full-time operational ground team.
+              </p>
+              <a class="svc-link" href="#contact">Enquire about cold storage <span>→</span></a>
+            </div>
+            <div class="svc-card-media">
+              <img src="../assets/coldstore-pallets.png" alt="Pallets of export fruit cartons inside the Fiesta Fresh cold store" loading="lazy">
+            </div>
+          </div>
+          <div class="svc-card-tag"><span class="idx">02</span><span class="rule"></span><span class="name">Cold Storage</span></div>
+          <a class="svc-card-arrow" href="#contact" aria-label="Enquire about cold storage"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H4M13 1v9" stroke="currentColor" stroke-width="1.6"/></svg></a>
+        </article>
+
+        <article class="svc-card reveal" data-delay="2">
+          <div class="svc-card-frame">
+            <div class="svc-card-panel">
+              <p class="svc-index">03 <span class="rule"></span></p>
+              <h3 class="svc-title">Logistics &amp; Distribution</h3>
+              <p class="svc-copy">
+                Own reach stacker and readily available refrigerated fleet — container consolidation
+                and distribution minutes from the port, road and market infrastructure.
+              </p>
+              <a class="svc-link" href="#contact">Enquire about logistics <span>→</span></a>
+            </div>
+            <div class="svc-card-media">
+              <img src="../assets/getty-1347753757.jpg" alt="Refrigerated trucks lined up at the distribution depot" loading="lazy">
+            </div>
+          </div>
+          <div class="svc-card-tag"><span class="idx">03</span><span class="rule"></span><span class="name">Logistics</span></div>
+          <a class="svc-card-arrow" href="#contact" aria-label="Enquire about logistics"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H4M13 1v9" stroke="currentColor" stroke-width="1.6"/></svg></a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <div class="contact-inner">
+        <div class="contact-lead reveal">
+          <p class="eyebrow"><span class="rule"></span>Contact</p>
+          <h2>Start a <em>conversation.</em></h2>
+          <p>
+            Trading, cooling or logistics — tell us what you need to move, and a member of the
+            team will respond directly. Weekdays 08:00–17:00, weekends by appointment.
+          </p>
+        </div>
+        <div class="contact-details reveal" data-delay="1">
+          <a href="tel:+27214934466"><span class="k">Telephone</span><span class="v">+27 (21) 493 4466</span></a>
+          <a href="mailto:info@fiestafresh.co.za"><span class="k">Email</span><span class="v">info@fiestafresh.co.za</span></a>
+          <div class="row"><span class="k">Facility</span><span class="v">19–21 Cochrane Avenue, Epping, Cape Town</span></div>
+        </div>
+        <div class="contact-actions reveal" data-delay="2">
+          <a class="btn btn-light" href="mailto:info@fiestafresh.co.za">Email the team <span class="arr">→</span></a>
+          <a class="btn btn-outline-light" href="tel:+27214934466">Call +27 (21) 493 4466</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-inner">
+      <p class="foot-brand">Fiesta Fresh<sup style="font-size:7px">®</sup></p>
+      <p class="foot-meta">
+        Fiesta Fresh (Pty) Ltd · CIPC K2024267384 · VAT 9198362270<br>
+        APAC-registered fresh produce agent · Majority-owned by Dole plc
+      </p>
+    </div>
+    <div class="foot-legal">
+      <p>© 2026 Fiesta Fresh. All rights reserved.</p>
+      <p><a href="https://www.linkedin.com/company/fiesta-fresh/" target="_blank" rel="noopener">LinkedIn</a> &nbsp;·&nbsp; <a href="https://fiestafresh.co.za" target="_blank" rel="noopener">fiestafresh.co.za</a></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.documentElement.classList.add('js');
+
+  /* Nav state */
+  const nav = document.getElementById('nav');
+  const onScrollNav = () => nav.classList.toggle('scrolled', window.scrollY > 24);
+  onScrollNav();
+  window.addEventListener('scroll', onScrollNav, {passive:true});
+
+  /* Reveal on scroll */
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, {threshold:.12, rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  /* Count-up stats */
+  const ease = t => 1 - Math.pow(1 - t, 3);
+  const fmt = (n, mode) => mode === 'thousands' ? n.toLocaleString('en-ZA').replace(/,/g, ',') : String(n);
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const cio = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      cio.unobserve(el);
+      const target = parseInt(el.dataset.count, 10);
+      const mode = el.dataset.format;
+      if (reduced) { el.textContent = fmt(target, mode); return; }
+      const dur = 1400;
+      const t0 = performance.now();
+      const tick = now => {
+        const p = Math.min((now - t0) / dur, 1);
+        el.textContent = fmt(Math.round(ease(p) * target), mode);
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    });
+  }, {threshold:.4});
+  document.querySelectorAll('[data-count]').forEach(el => cio.observe(el));
+
+  /* Service cards: tap-to-open on touch devices */
+  if (matchMedia('(hover: none)').matches) {
+    document.querySelectorAll('.svc-card').forEach(card => {
+      card.addEventListener('click', e => {
+        if (e.target.closest('a')) return; // let panel links through
+        const wasOpen = card.classList.contains('open');
+        document.querySelectorAll('.svc-card.open').forEach(c => c.classList.remove('open'));
+        if (!wasOpen) card.classList.add('open');
+      });
+    });
+  }
+</script>
+</body>
+</html>
