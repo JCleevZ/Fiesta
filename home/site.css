@@ -18,6 +18,7 @@
   --amber:#D97E1F;
   --white-dim:rgba(250,248,244,.66);
   --white-line:rgba(250,248,244,.16);
+  --hero-tint:#F4F1EA;
   --serif:"Cormorant Garamond",Georgia,serif;
   --sans:"Manrope",Helvetica,Arial,sans-serif;
   --max:1320px;
@@ -66,8 +67,8 @@ a{color:inherit;text-decoration:none}
   transition:background .35s ease,border-color .35s ease,backdrop-filter .35s ease;
   border-bottom:1px solid transparent;
 }
-.nav.scrolled,.nav.solid{
-  background:rgba(250,248,244,.92);
+.nav.scrolled{
+  background:rgba(244,241,234,.94); /* off-white, matches page hero */
   backdrop-filter:blur(12px);
   border-bottom-color:var(--line);
 }
@@ -139,9 +140,13 @@ a{color:inherit;text-decoration:none}
 
 /* ---------- Page hero (interior) ---------- */
 .page-hero{
+  position:relative;
+  overflow:hidden;
+  background:var(--hero-tint);
   padding:calc(76px + clamp(48px,7vw,96px)) 0 clamp(44px,5.5vw,72px);
   border-bottom:1px solid var(--line);
 }
+.page-hero .wrap{position:relative;z-index:1}
 .page-hero .eyebrow{color:var(--ink-50);display:flex;align-items:center;gap:16px;margin-bottom:22px}
 .page-hero h1{
   font-family:var(--serif);
@@ -149,7 +154,7 @@ a{color:inherit;text-decoration:none}
   font-size:clamp(40px,5.4vw,76px);
   line-height:1.04;
   letter-spacing:-.015em;
-  max-width:16ch;
+  max-width:18ch;
   text-wrap:balance;
 }
 .page-hero h1 em{font-style:italic}
@@ -168,7 +173,7 @@ a{color:inherit;text-decoration:none}
   display:grid;
   grid-template-columns:repeat(12,1fr);
   gap:clamp(24px,3vw,48px);
-  align-items:end;
+  align-items:start;
 }
 .hero-grid .hero-text{grid-column:1/8}
 .hero-grid .hero-media{grid-column:9/13}
@@ -483,7 +488,7 @@ section{position:relative}
   display:grid;
   grid-template-columns:repeat(12,1fr);
   gap:clamp(24px,3vw,48px);
-  align-items:start;
+  align-items:end;
 }
 .contact-lead{grid-column:1/8}
 .contact .eyebrow{color:var(--white-dim);display:flex;align-items:center;gap:16px;margin-bottom:20px}
@@ -511,8 +516,7 @@ section{position:relative}
 .contact-details a .v{transition:color .25s ease}
 .contact-details a:hover .v{color:var(--amber)}
 .contact-actions{
-  grid-column:1/-1;
-  margin-top:clamp(20px,2.5vw,32px);
+  margin-top:clamp(22px,2.6vw,34px);
   display:flex;flex-wrap:wrap;gap:14px;
 }
 @media (max-width:900px){
@@ -533,6 +537,7 @@ footer{
 .foot-brand{
   font-weight:700;font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--paper);
 }
+.foot-brand img{height:40px;width:auto;display:block}
 .foot-nav{display:flex;flex-wrap:wrap;gap:8px 26px;list-style:none}
 .foot-nav a{
   font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;

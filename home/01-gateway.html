@@ -422,7 +422,7 @@
     display:grid;
     grid-template-columns:repeat(12,1fr);
     gap:clamp(24px,3vw,48px);
-    align-items:start;
+    align-items:end;
   }
   .contact-lead{grid-column:1/8}
   .contact .eyebrow{color:var(--white-dim);display:flex;align-items:center;gap:16px;margin-bottom:20px}
@@ -450,8 +450,7 @@
   .contact-details a .v{transition:color .25s ease}
   .contact-details a:hover .v{color:var(--amber)}
   .contact-actions{
-    grid-column:1/-1;
-    margin-top:clamp(20px,2.5vw,32px);
+    margin-top:clamp(22px,2.6vw,34px);
     display:flex;flex-wrap:wrap;gap:14px;
   }
   .btn-light{background:var(--paper);color:var(--ink);border-color:var(--paper)}
@@ -476,6 +475,7 @@
   .foot-brand{
     font-weight:700;font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--paper);
   }
+  .foot-brand img{height:40px;width:auto;display:block}
   .foot-meta{font-size:12px;letter-spacing:.06em;line-height:2;text-align:right}
   .foot-legal{
     border-top:1px solid var(--white-line);
@@ -550,10 +550,6 @@
         <div class="hb-item">
           <span class="hb-val"><span data-count="80">0</span><small>+</small></span>
           <span class="hb-lbl">Reefer plug-in points</span>
-        </div>
-        <div class="hb-item">
-          <span class="hb-val">~15<small>km</small></span>
-          <span class="hb-lbl">To the Port of Cape Town</span>
         </div>
         <div class="hb-item">
           <span class="hb-val">APAC</span>
@@ -650,15 +646,15 @@
             Trading, cooling or logistics — tell us what you need to move, and a member of the
             team will respond directly. Weekdays 08:00–17:00, weekends by appointment.
           </p>
+          <div class="contact-actions">
+            <a class="btn btn-light" href="mailto:info@fiestafresh.co.za">Email the team <span class="arr">→</span></a>
+            <a class="btn btn-outline-light" href="tel:+27214934466">Call +27 (21) 493 4466</a>
+          </div>
         </div>
         <div class="contact-details reveal" data-delay="1">
           <a href="tel:+27214934466"><span class="k">Telephone</span><span class="v">+27 (21) 493 4466</span></a>
           <a href="mailto:info@fiestafresh.co.za"><span class="k">Email</span><span class="v">info@fiestafresh.co.za</span></a>
           <div class="row"><span class="k">Facility</span><span class="v">19–21 Cochrane Avenue, Epping, Cape Town</span></div>
-        </div>
-        <div class="contact-actions reveal" data-delay="2">
-          <a class="btn btn-light" href="mailto:info@fiestafresh.co.za">Email the team <span class="arr">→</span></a>
-          <a class="btn btn-outline-light" href="tel:+27214934466">Call +27 (21) 493 4466</a>
         </div>
       </div>
     </div>
@@ -670,7 +666,7 @@
 <footer>
   <div class="wrap">
     <div class="foot-inner">
-      <p class="foot-brand">Fiesta Fresh<sup style="font-size:7px">®</sup></p>
+      <a class="foot-brand" href="#top" aria-label="Fiesta Fresh — back to top"><img src="../assets/logo-primary.png" alt="Fiesta Fresh"></a>
       <p class="foot-meta">
         Fiesta Fresh (Pty) Ltd · CIPC K2024267384 · VAT 9198362270<br>
         APAC-registered fresh produce agent · Majority-owned by Dole plc
