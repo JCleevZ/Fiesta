@@ -100,6 +100,7 @@
     max-width:var(--max);margin:0 auto;
     padding:0 var(--pad);
     height:76px;
+    position:relative;
     display:flex;align-items:center;justify-content:space-between;gap:24px;
   }
   .brand{
@@ -128,8 +129,37 @@
   .nav-cta:hover{background:var(--navy-2)}
   .nav-cta:active{transform:translateY(1px)}
   .nav-cta .short{display:none}
+  .nav-toggle{
+    display:none;width:44px;height:44px;
+    align-items:center;justify-content:center;
+    background:none;border:0;padding:0;margin:0;cursor:pointer;color:var(--ink);
+  }
+  .nav-toggle-bars,.nav-toggle-bars::before,.nav-toggle-bars::after{
+    content:"";display:block;width:22px;height:2px;background:currentColor;
+    transition:transform .25s ease,opacity .2s ease,background .2s ease;
+  }
+  .nav-toggle-bars{position:relative}
+  .nav-toggle-bars::before{position:absolute;left:0;top:-7px}
+  .nav-toggle-bars::after{position:absolute;left:0;top:7px}
+  .nav.nav-open .nav-toggle-bars{background:transparent}
+  .nav.nav-open .nav-toggle-bars::before{transform:translateY(7px) rotate(45deg)}
+  .nav.nav-open .nav-toggle-bars::after{transform:translateY(-7px) rotate(-45deg)}
   @media (max-width:1020px){
-    .nav-links{display:none}
+    .nav-toggle{display:inline-flex}
+    .nav-cta{margin-left:auto}
+    .nav-links{
+      display:flex;flex-direction:column;align-items:stretch;gap:0;
+      position:absolute;top:100%;left:0;right:0;
+      padding:6px var(--pad) 14px;
+      background:var(--paper);border-bottom:1px solid var(--line);
+      box-shadow:0 18px 30px -20px rgba(0,0,0,.35);
+      opacity:0;visibility:hidden;transform:translateY(-10px);
+      transition:opacity .28s ease,transform .28s ease,visibility .28s ease;
+    }
+    .nav-links a{display:block;padding:15px 2px;font-size:13px;border-bottom:1px solid var(--line)}
+    .nav-links li:last-child a{border-bottom:0}
+    .nav.nav-open{background:var(--paper);backdrop-filter:blur(12px);border-bottom-color:var(--line)}
+    .nav.nav-open .nav-links{opacity:1;visibility:visible;transform:none}
   }
   @media (max-width:560px){
     .nav-inner{height:64px}
@@ -508,7 +538,7 @@
   <div class="nav-inner">
     <a class="brand" href="#top"><img src="assets/logo-primary.webp" alt="Fiesta Fresh"></a>
     <nav aria-label="Primary">
-      <ul class="nav-links">
+      <ul class="nav-links" id="primary-nav">
         <li><a href="about.html">About</a></li>
         <li><a href="team.html">Team</a></li>
         <li><a href="services.html">Services</a></li>
@@ -517,6 +547,7 @@
       </ul>
     </nav>
     <a class="nav-cta" href="contact.html"><span class="full">Start a conversation</span><span class="short">Contact</span></a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle menu"><span class="nav-toggle-bars"></span></button>
   </div>
 </header>
 
@@ -732,6 +763,8 @@
       });
     });
   }
+  /* mobile nav toggle */
+  (function(){var n=document.getElementById("nav");if(!n)return;var b=n.querySelector(".nav-toggle");if(!b)return;b.addEventListener("click",function(){var o=n.classList.toggle("nav-open");b.setAttribute("aria-expanded",o?"true":"false");});n.querySelectorAll(".nav-links a").forEach(function(a){a.addEventListener("click",function(){n.classList.remove("nav-open");b.setAttribute("aria-expanded","false");});});})();
 </script>
 </body>
 </html>

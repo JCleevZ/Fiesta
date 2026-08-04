@@ -23,7 +23,7 @@
   <div class="nav-inner">
     <a class="brand" href="index.html"><img src="assets/logo-primary.webp" alt="Fiesta Fresh"></a>
     <nav aria-label="Primary">
-      <ul class="nav-links">
+      <ul class="nav-links" id="primary-nav">
         <li><a href="about.html">About</a></li>
         <li><a href="team.html">Team</a></li>
         <li><a href="services.html">Services</a></li>
@@ -32,6 +32,7 @@
       </ul>
     </nav>
     <a class="nav-cta" href="contact.html" aria-current="page"><span class="full">Start a conversation</span><span class="short">Contact</span></a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle menu"><span class="nav-toggle-bars"></span></button>
   </div>
 </header>
 
@@ -180,6 +181,8 @@
     px();
     window.addEventListener('scroll', px, {passive:true});
   }
+  /* mobile nav toggle */
+  (function(){var n=document.getElementById("nav");if(!n)return;var b=n.querySelector(".nav-toggle");if(!b)return;b.addEventListener("click",function(){var o=n.classList.toggle("nav-open");b.setAttribute("aria-expanded",o?"true":"false");});n.querySelectorAll(".nav-links a").forEach(function(a){a.addEventListener("click",function(){n.classList.remove("nav-open");b.setAttribute("aria-expanded","false");});});})();
 </script>
 </body>
 </html>
