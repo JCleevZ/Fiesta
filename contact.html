@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <!--
-  FIESTA FRESH — Our Team
-  Content recreated from fiestafresh.co.za/our-team in the redesign v2 style.
+  FIESTA FRESH — Contact
+  Content recreated from fiestafresh.co.za/contact in the redesign v2 style.
   Shares site.css with the other interior pages.
 -->
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Our Team — Fiesta Fresh | Leadership, Finance &amp; Administration</title>
+<title>Contact — Fiesta Fresh | Epping, Cape Town</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Meet the people behind Fiesta Fresh — the directors and the finance and administration team driving fresh produce trading at the Cape Town gateway.">
-<link rel="icon" type="image/png" href="../assets/favicon.png">
+<meta name="description" content="Visit Fiesta Fresh at 19–21 Cochrane Avenue, Epping, Cape Town — or call +27 (21) 493 4466. Open weekdays 08:00–17:00, weekends by appointment.">
+<link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -21,17 +21,17 @@
 
 <header class="nav solid" id="nav">
   <div class="nav-inner">
-    <a class="brand" href="01-gateway.html"><img src="../assets/logo-primary.png" alt="Fiesta Fresh"></a>
+    <a class="brand" href="index.html"><img src="assets/logo-primary.png" alt="Fiesta Fresh"></a>
     <nav aria-label="Primary">
       <ul class="nav-links">
         <li><a href="about.html">About</a></li>
-        <li><a href="team.html" aria-current="page">Team</a></li>
+        <li><a href="team.html">Team</a></li>
         <li><a href="services.html">Services</a></li>
         <li><a href="trading.html">Trading</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="contact.html" aria-current="page">Contact</a></li>
       </ul>
     </nav>
-    <a class="nav-cta" href="contact.html"><span class="full">Start a conversation</span><span class="short">Contact</span></a>
+    <a class="nav-cta" href="contact.html" aria-current="page"><span class="full">Start a conversation</span><span class="short">Contact</span></a>
   </div>
 </header>
 
@@ -40,60 +40,63 @@
   <!-- ============ PAGE HERO ============ -->
   <section class="page-hero">
     <div class="wrap">
-      <p class="eyebrow reveal">Our team</p>
-      <h1 class="reveal" data-delay="1">The people behind <em>the produce.</em></h1>
+      <p class="eyebrow reveal">Contact us</p>
+      <h1 class="reveal" data-delay="1">Better yet, see us <em>in person.</em></h1>
       <p class="lede reveal" data-delay="2">
-        Our people are the energy and momentum behind our operations — a business built to
-        move quickly, respond decisively and deliver value in fast-moving markets.
+        We love our customers, so feel free to visit during normal business hours — or reach
+        the team directly by phone or email.
       </p>
+      <div class="hero-actions reveal" data-delay="3">
+        <a class="btn btn-solid" href="mailto:info@fiestafresh.co.za">Email the team <span class="arr">→</span></a>
+        <a class="btn btn-ghost" href="tel:+27214934466">Call +27 (21) 493 4466</a>
+      </div>
     </div>
   </section>
 
-  <!-- ============ TEAM PHOTO ============ -->
+  <!-- ============ DETAILS + HOURS ============ -->
+  <section class="section-pad" id="visit">
+    <div class="wrap">
+      <div class="split" style="align-items:start">
+        <div class="split-copy reveal">
+          <p class="eyebrow">Fiesta Fresh</p>
+          <h2 class="section-title">The <em>facility.</em></h2>
+          <p class="body">
+            <strong>19–21 Cochrane Avenue</strong><br>
+            Epping, Cape Town, 7460<br>
+            South Africa
+          </p>
+          <p class="body">
+            <a href="tel:+27214934466" style="border-bottom:1px solid var(--ink)">+27 (21) 493 4466</a><br>
+            <a href="mailto:info@fiestafresh.co.za" style="border-bottom:1px solid var(--ink)">info@fiestafresh.co.za</a>
+          </p>
+          <p class="body">
+            Positioned in Epping Industria with direct access to port, road and market
+            infrastructure — roughly 15&nbsp;km from the Port of Cape Town.
+          </p>
+        </div>
+        <div class="split-media reveal" data-delay="1">
+          <p class="eyebrow" style="color:var(--ink-50);display:flex;align-items:center;gap:16px;margin-bottom:20px">Hours</p>
+          <div class="hours">
+            <div class="h-row"><span class="h-day">Monday</span><span class="h-time">08:00 – 17:00</span></div>
+            <div class="h-row"><span class="h-day">Tuesday</span><span class="h-time">08:00 – 17:00</span></div>
+            <div class="h-row"><span class="h-day">Wednesday</span><span class="h-time">08:00 – 17:00</span></div>
+            <div class="h-row"><span class="h-day">Thursday</span><span class="h-time">08:00 – 17:00</span></div>
+            <div class="h-row"><span class="h-day">Friday</span><span class="h-time">08:00 – 17:00</span></div>
+            <div class="h-row"><span class="h-day">Saturday</span><span class="h-time">By appointment</span></div>
+            <div class="h-row"><span class="h-day">Sunday</span><span class="h-time">By appointment</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LOCATION BANNER ============ -->
   <figure class="media-banner reveal">
-    <img data-parallax src="../assets/guys.jpg" alt="The Fiesta Fresh leadership team" loading="lazy">
-    <figcaption>Fiesta Fresh leadership</figcaption>
+    <img data-parallax src="assets/ship-cape-town-harbour.jpg" alt="Cape Town harbour with Table Mountain beyond" loading="lazy">
+    <figcaption>Epping Industria, Cape Town — at the export gateway</figcaption>
   </figure>
 
-  <!-- ============ DIRECTORS ============ -->
-  <section class="section-pad" id="directors">
-    <div class="wrap">
-      <div class="team-group">
-        <div class="section-head reveal">
-          <div>
-            <p class="eyebrow">Directors</p>
-            <h2 class="section-title">Leadership</h2>
-          </div>
-        </div>
-        <div class="team-list reveal" data-delay="1">
-          <div class="team-member"><span class="team-name">Theo Craven</span><span class="team-role">Director</span></div>
-          <div class="team-member"><span class="team-name">Servaas van Niekerk</span><span class="team-role">Director</span></div>
-          <div class="team-member"><span class="team-name">Renier Basson</span><span class="team-role">Director</span></div>
-          <div class="team-member"><span class="team-name">Hannes Nieuwoudt</span><span class="team-role">Director</span></div>
-          <div class="team-member"><span class="team-name">Shane Hewitt</span><span class="team-role">Director</span></div>
-          <div class="team-member"><span class="team-name">Anton Gouws</span><span class="team-role">Director</span></div>
-        </div>
-      </div>
-
-      <div class="team-group">
-        <div class="section-head reveal">
-          <div>
-            <p class="eyebrow">Finance &amp; administration</p>
-            <h2 class="section-title">The engine room</h2>
-          </div>
-        </div>
-        <div class="team-list reveal" data-delay="1">
-          <div class="team-member"><span class="team-name">Hugo Truter</span><span class="team-role">Finance &amp; Administration</span></div>
-          <div class="team-member"><span class="team-name">Aschraf Porter</span><span class="team-role">Finance &amp; Administration</span></div>
-          <div class="team-member"><span class="team-name">Beulah Syms</span><span class="team-role">Finance &amp; Administration</span></div>
-          <div class="team-member"><span class="team-name">Jacqui von Molendorff</span><span class="team-role">Finance &amp; Administration</span></div>
-          <div class="team-member"><span class="team-name">Adelle Rodrigues</span><span class="team-role">Finance &amp; Administration</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ CONTACT ============ -->
+  <!-- ============ CONTACT BAND ============ -->
   <section class="contact" id="contact">
     <div class="wrap">
       <div class="contact-inner">
@@ -124,9 +127,9 @@
 <footer>
   <div class="wrap">
     <div class="foot-inner">
-      <a class="foot-brand" href="01-gateway.html" aria-label="Fiesta Fresh — back to homepage"><img src="../assets/logo-primary.png" alt="Fiesta Fresh"></a>
+      <a class="foot-brand" href="index.html" aria-label="Fiesta Fresh — back to homepage"><img src="assets/logo-primary.png" alt="Fiesta Fresh"></a>
       <ul class="foot-nav">
-        <li><a href="01-gateway.html">Home</a></li>
+        <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="team.html">Team</a></li>
         <li><a href="services.html">Services</a></li>
