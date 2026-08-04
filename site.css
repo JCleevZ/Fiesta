@@ -297,10 +297,8 @@ section{position:relative}
 .facts li{
   display:flex;align-items:baseline;gap:14px;
   padding:11px 0;
-  border-bottom:1px solid var(--line);
   font-size:14px;color:var(--ink);
 }
-.facts li:first-child{border-top:1px solid var(--line)}
 .facts li::before{
   content:"";flex:none;width:18px;height:1px;background:var(--amber);
   transform:translateY(-4px);
@@ -310,8 +308,7 @@ section{position:relative}
   .row-idx{padding-top:0}
 }
 @media (max-width:560px){
-  .facts li{border-bottom:none;padding:8px 0}
-  .facts li:first-child{border-top:none}
+  .facts li{padding:8px 0}
 }
 
 /* ---------- Stat strip ---------- */
