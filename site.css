@@ -445,6 +445,15 @@ section{position:relative}
 }
 
 /* ---------- Team list ---------- */
+.team-cols{display:grid;grid-template-columns:1fr 1fr;gap:clamp(44px,5vw,72px);align-items:start}
+.team-cols .team-group + .team-group{margin-top:0}
+/* two-column zone is too narrow for name-beside-role: stack them */
+@media (min-width:761px) and (max-width:1150px){
+  .team-cols .team-member{grid-template-columns:1fr;gap:6px}
+}
+@media (max-width:760px){
+  .team-cols{grid-template-columns:1fr}
+}
 .team-group + .team-group{margin-top:clamp(48px,6vw,80px)}
 .team-list{border-top:1px solid var(--line)}
 .team-member{
