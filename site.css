@@ -184,8 +184,6 @@ a{color:inherit;text-decoration:none}
   font-size:clamp(40px,5.4vw,76px);
   line-height:1.04;
   letter-spacing:-.015em;
-  max-width:18ch;
-  text-wrap:balance;
 }
 .page-hero h1 em{font-style:italic}
 .page-hero .lede{
