@@ -600,6 +600,18 @@ footer{
 @media (max-width:720px){
   .foot-meta{text-align:left}
 }
+@media (max-width:560px){
+  /* one statement / link per line */
+  .foot-inner{flex-direction:column;align-items:flex-start;gap:26px}
+  .foot-nav{flex-direction:column;gap:14px}
+  .foot-meta{line-height:1.6}
+  .foot-meta .fm{display:block}
+  .foot-meta .dot,.foot-meta br{display:none}
+  .foot-legal{flex-direction:column;align-items:flex-start;gap:12px}
+  .foot-legal p{margin:0}
+  .foot-legal a{display:block}
+  .foot-legal .dot{display:none}
+}
 
 /* ---------- Reveal on scroll ---------- */
 .js .reveal{opacity:0;transform:translateY(34px);transition:opacity .9s cubic-bezier(.22,.61,.21,1),transform .9s cubic-bezier(.22,.61,.21,1)}

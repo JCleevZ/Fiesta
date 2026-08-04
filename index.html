@@ -519,6 +519,16 @@
   @media (max-width:720px){
     .foot-meta{text-align:left}
   }
+  @media (max-width:560px){
+    .foot-inner{flex-direction:column;align-items:flex-start;gap:26px}
+    .foot-meta{line-height:1.6}
+    .foot-meta .fm{display:block}
+    .foot-meta .dot,.foot-meta br{display:none}
+    .foot-legal{flex-direction:column;align-items:flex-start;gap:12px}
+    .foot-legal p{margin:0}
+    .foot-legal a{display:block}
+    .foot-legal .dot{display:none}
+  }
 
   /* ---------- Reveal on scroll ---------- */
   .js .reveal{opacity:0;transform:translateY(34px);transition:opacity .9s cubic-bezier(.22,.61,.21,1),transform .9s cubic-bezier(.22,.61,.21,1)}
@@ -700,13 +710,13 @@
     <div class="foot-inner">
       <a class="foot-brand" href="#top" aria-label="Fiesta Fresh — back to top"><img src="assets/logo-primary.webp" alt="Fiesta Fresh"></a>
       <p class="foot-meta">
-        Fiesta Fresh (Pty) Ltd · CIPC K2024267384 · VAT 9198362270<br>
-        APAC-registered fresh produce agent · Majority-owned by Dole plc
+        <span class="fm">Fiesta Fresh (Pty) Ltd</span><span class="dot"> · </span><span class="fm">CIPC K2024267384</span><span class="dot"> · </span><span class="fm">VAT 9198362270</span><br>
+        <span class="fm">APAC-registered fresh produce agent</span><span class="dot"> · </span><span class="fm">Majority-owned by Dole plc</span>
       </p>
     </div>
     <div class="foot-legal">
       <p>© 2026 Fiesta Fresh. All rights reserved.</p>
-      <p><a href="https://www.linkedin.com/company/fiesta-fresh/" target="_blank" rel="noopener">LinkedIn</a> &nbsp;·&nbsp; <a href="https://fiestafresh.co.za" target="_blank" rel="noopener">fiestafresh.co.za</a></p>
+      <p><a href="https://www.linkedin.com/company/fiesta-fresh/" target="_blank" rel="noopener">LinkedIn</a><span class="dot"> &nbsp;·&nbsp; </span><a href="https://fiestafresh.co.za" target="_blank" rel="noopener">fiestafresh.co.za</a></p>
     </div>
   </div>
 </footer>
