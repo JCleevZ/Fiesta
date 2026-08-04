@@ -309,6 +309,10 @@ section{position:relative}
   .row-item{grid-template-columns:1fr;gap:14px}
   .row-idx{padding-top:0}
 }
+@media (max-width:560px){
+  .facts li{border-bottom:none;padding:8px 0}
+  .facts li:first-child{border-top:none}
+}
 
 /* ---------- Stat strip ---------- */
 .stat-strip{
@@ -343,9 +347,17 @@ section{position:relative}
   .stat-strip .hb-item:nth-child(n+4){border-top:1px solid var(--white-line)}
 }
 @media (max-width:560px){
-  .stat-strip .hb-inner{grid-template-columns:1fr 1fr}
-  .stat-strip .hb-item{border-top:1px solid var(--white-line)}
-  .stat-strip .hb-item:nth-child(-n+2){border-top:none}
+  /* Services: 2,000 + 80 on the top row, full-width divider, ~15km centred below */
+  .stat-strip--split .hb-inner{grid-template-columns:1fr 1fr}
+  .stat-strip--split .hb-item:nth-child(3){
+    grid-column:1 / -1;
+    border-top:1px solid var(--white-line);
+    align-items:center;text-align:center;
+  }
+  /* About: the three points stacked one per line */
+  .stat-strip--stack .hb-inner{grid-template-columns:1fr}
+  .stat-strip--stack .hb-item{border-top:1px solid var(--white-line)}
+  .stat-strip--stack .hb-item:first-child{border-top:none}
 }
 
 /* ---------- Navy band (prose) ---------- */
